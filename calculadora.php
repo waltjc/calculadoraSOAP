@@ -1,12 +1,12 @@
 <body>
    <form action="" method="post" >
-   		<input type="text" name="v1" placeholder="Valor 1" />
+		<input type="text" name="v1" placeholder="Valor 1" />
 		<input type="text" name="v2" placeholder="Valor 2" />
-
+		
 		<input type="submit" name="operacao" value="+">     
-    	<input type="submit" name="operacao" value="-">     
-      	<input type="submit" name="operacao" value="*">     
-      	<input type="submit" name="operacao" value="/"> 
+		<input type="submit" name="operacao" value="-">     
+		<input type="submit" name="operacao" value="*">     
+		<input type="submit" name="operacao" value="/"> 
    </form> 
 </body>
 
