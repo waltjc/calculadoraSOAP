@@ -1,14 +1,35 @@
-<body>
-   <form action="" method="post" >
-	<input type="text" name="v1" placeholder="Valor 1" />
-	<input type="text" name="v2" placeholder="Valor 2" />
-		
-	<input type="submit" name="operacao" value="+">     
-	<input type="submit" name="operacao" value="-">     
-	<input type="submit" name="operacao" value="*">     
-	<input type="submit" name="operacao" value="/"> 
-   </form> 
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Calculadora</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <form action="calculadora.php" method="post">
+        <div class="form-group">
+          <label for="num1">Primeiro número:</label>
+          <input type="text" class="form-control" id="v1" name="v1">
+        </div>
+        <div class="form-group">
+          <label for="num2">Segundo número:</label>
+          <input type="text" class="form-control" id="v2" name="v2">
+        </div>
+        <div class="form-group">
+          <label for="operacao">Operação:</label>
+          <select class="form-control" id="operacao" name="operacao">
+            <option value="soma">Soma</option>
+            <option value="subtracao">Subtração</option>
+            <option value="multiplicacao">Multiplicação</option>
+            <option value="divisao">Divisão</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Calcular</button>
+      </form>
+    </div>
+  </body>
+</html>
 
 <?php
 	require "nusoap.php";
@@ -18,21 +39,21 @@
 	$op = isset($_POST["operacao"]) ? $_POST["operacao"] : '';
 
 	switch($op){
-		case "+":
+		case "soma":
 			$resultado = $clientcalc->call("Add", array("intA" => "$a", "intB" => "$b"));
-			echo 'Resultado: '.$resultado["AddResult"];
+			echo '<center><h2>Resultado: '.$resultado["AddResult"].'</h2>';
 			break;
-		case "-":
+		case "subtracao":
 			$resultado = $clientcalc->call("Subtract", array("intA" => "$a", "intB" => "$b"));
-			echo 'Resultado: '.$resultado["SubtractResult"];
+			echo '<center><h2>Resultado: '.$resultado["SubtractResult"].'</h2>';
 			break;
-		case "*":
+		case "multiplicacao":
 			$resultado = $clientcalc->call("Multiply", array("intA" => "$a", "intB" => "$b"));
-			echo 'Resultado: '.$resultado["MultiplyResult"];
+			echo '<center><h2>Resultado: '.$resultado["MultiplyResult"].'</h2>';
 			break;
-		case "/":
+		case "divisao":
 			$resultado = $clientcalc->call("Divide", array("intA" => "$a", "intB" => "$b"));
-			echo 'Resultado: '.$resultado["DivideResult"];
+			echo '<center><h2>Resultado: '.$resultado["DivideResult"].'</h2>';
 			break;
 		}
 ?>
